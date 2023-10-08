@@ -1,3 +1,7 @@
+/*
+    与 B3691 相同
+*/
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
