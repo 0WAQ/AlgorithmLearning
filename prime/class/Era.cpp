@@ -7,7 +7,8 @@
 using namespace std;
 
 const int N = 1e5 + 5;
-int prime[N], isPrime[N];
+int prime[N];
+bool isPrime[N];
 int n;
 
 int main()
@@ -20,6 +21,7 @@ int main()
     int len = 0;
     for(int i = 2; i <= n; i++)
     {
+        // 缺陷：一个非质数可能会被筛到多次
         if(isPrime[i])   // 如果 i 是质数
         {
             prime[len++] = i;   // 将i放入prime数组
