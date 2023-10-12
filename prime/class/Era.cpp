@@ -14,7 +14,7 @@ int main()
 {
     cin >> n;
 
-    for(int i = 2; i <= n; i++)
+    for(int i = 0; i <= n; i++)
         isPrime[i] = 1;
 
     int len = 0;
@@ -24,7 +24,7 @@ int main()
         {
             prime[len++] = i;   // 将i放入prime数组
             for(int j = 2 * i; j <= n; j += i)  // i的倍数不是质数
-                isPrime[i] = 0;
+                isPrime[j] = 0;
         }
     }
 
