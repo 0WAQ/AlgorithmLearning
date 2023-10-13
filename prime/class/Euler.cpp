@@ -31,7 +31,7 @@ int main()
                 break;
             isPrime[x] = false;
 
-            if(i % prime[j] == 0)
+            if(i % prime[j] == 0)   //
                 break;
         }
     }
