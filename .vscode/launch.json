@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/bwb/work/algorithm/prime/class",
-      "program": "/home/bwb/work/algorithm/prime/class/build/Debug/outDebug",
+      "cwd": "/home/bwb/work/algorithm/quick_mul/class",
+      "program": "/home/bwb/work/algorithm/quick_mul/class/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
