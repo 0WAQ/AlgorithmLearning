@@ -12,8 +12,7 @@ int main()
     cin >> n >> x;
     while(x)   
     {
-        int t = x % 2;
-        if(t)   ans *= n;   // 该位为1
+        if(x % 2)   ans *= n;   // 该位为1
         n *= n;
         x /= 2;
     }  
