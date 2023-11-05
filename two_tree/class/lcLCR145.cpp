@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+const int N = 1010;
+int a[N], n;
+
 struct TreeNode
 {
     int val;
@@ -11,33 +14,31 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool isbool(TreeNode* p, TreeNode* q)
+bool check(TreeNode* p, TreeNode* q)
 {
-
-    if(p->val == q->val)
-    {
-        isbool(p->left, q->right);
-        isbool(p->right, q->left);
-    }
-    else
-    {
+    // 递归出口，递归到了叶子节点
+    if(!p && !q)
+        return true;
+    if(!p || !q)
         return false;
-    }
+    return p->val == q->val && check(p->left, q->right) && check(p->right, q->left);
 }
 
 bool checkSymmetricTree(TreeNode *root)
 {
-    return isbool(root->left, root->right);
+    if(!root)
+        return true;
+    return check(root->left, root->right);
 }
 
-TreeNode* insert(TreeNode* node, int x)
+TreeNode* build(int i)
 {
-    if(node == nullptr)
-        node = new TreeNode(x);
-    else if (node->left == nullptr)
-        node->left = insert(node->left, x);
-    else
-        node->right = insert(node->right, x);
+    if(i > n || a[i] == -1)
+        return nullptr;
+    TreeNode* node = new TreeNode;
+    node->val = a[i];
+    node->left = build(2 * i);
+    node->right = build(2 * i + 1);
     return node;
 }
 
@@ -53,18 +54,19 @@ void print(TreeNode* node)
 
 int main()
 {
-    int n, x;
-    cin >> n;
-    TreeNode* root = nullptr;
+    ios::sync_with_stdio(0);
     
-    for(int i = 0; i < n; i++)
-    {
-        cin >> x;
-        root = insert(root, x);
-    }
+    cin >> n;
+    for(int i = 1; i <= n; i++)
+       cin >> a[i];
+
+    TreeNode* root = build(1);
     print(root);
     cout << endl;
-    bool ans = checkSymmetricTree(root);
-    cout << ans << endl;
+
+    if(checkSymmetricTree(root))
+        cout << "true" << endl;
+    else
+        cout << "false" << endl;
     return 0;
 }
