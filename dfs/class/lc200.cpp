@@ -6,7 +6,7 @@ class Solution {
 public:
     static void dfs(vector<vector<char>>& grid, int i, int j)
     {
-        int n = grid.size();
+        int n = grid.size(); 
         int m = grid[0].size();
 
         grid[i][j] = '0';
