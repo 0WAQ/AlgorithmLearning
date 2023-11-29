@@ -14,7 +14,7 @@ void dfs(const int& x)
             printf("%5d", a[i]);
         printf("\n");        
         return;
-    }
+    }   
 
     for(int i = 1; i <= n; i++)
     {
