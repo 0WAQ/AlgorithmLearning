@@ -7,6 +7,8 @@ int s[5];
 int a[5][21];
 int l, r, t;
 
+// 可以将l、r作为dfs的参数，具体方法参考p2036
+
 void dfs(int x, int y)  // x科y题
 {
     if(y > s[x])    // 该科题全部做完了
