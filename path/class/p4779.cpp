@@ -1,3 +1,7 @@
+/*
+    Dijkstra算法堆优化
+    时间复杂度：O(mlogn)
+*/
 #include <iostream>
 #include <cstring>
 #include <queue>
