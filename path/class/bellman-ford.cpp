@@ -1,7 +1,8 @@
 /*
     Bellman-ford算法；
     时间复杂度：O(nm)
-    使用场景：具有父权边、有边数限制
+    使用场景：1.具有父权边、有边数限制
+             2.可以判断是否具有负权回路（负环），不能找出环
 */
 #include<iostream>
 #include<cstring>
