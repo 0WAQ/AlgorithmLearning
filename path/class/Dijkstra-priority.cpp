@@ -15,6 +15,7 @@ int dist[N];
 bool st[N];
 int n, m, s;
 
+// 创建邻接表
 void add(int a, int b, int c)
 {
     w[idx] = c, e[idx] = b, ne[idx] = h[a], h[a] = idx++;
@@ -22,8 +23,8 @@ void add(int a, int b, int c)
 
 void dijkstra()
 {
+    // 初始化
     memset(dist, 0x3f, sizeof(dist));
-    
     dist[s] = 0;
     q.push({0, s});
     
@@ -51,7 +52,7 @@ void dijkstra()
 
 int main()
 {
-    memset(h, -1, sizeof h);
+    memset(h, -1, sizeof(h));
     cin >> n >> m >> s;
     while(m--)
     {

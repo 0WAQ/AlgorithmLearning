@@ -1,8 +1,9 @@
 /*
     Bellman-ford算法；
     时间复杂度：O(nm)
-    使用场景：1.具有父权边、有边数限制
-             2.可以判断是否具有负权回路（负环），不能找出环
+    使用场景：1.具有负权边
+             2.有边数限制（这种情况下，有负环也可以处理）
+             3.可以判断是否具有负权回路（负环），不能找出环
 */
 #include<iostream>
 #include<cstring>
@@ -10,7 +11,7 @@ using namespace std;
 
 const int N = 510, M = 10010;
 int dist[N];
-int backup[N];//为了避免串联情况：https://www.acwing.com/solution/content/14088/
+int backup[N]; //为了避免串联情况：https://www.acwing.com/solution/content/14088/
 
 struct edge{
     int a, b, w;
@@ -19,7 +20,7 @@ struct edge{
 int n, m, k;
 
 /**
- * 只看算法的话，其实就是将遍历所有边的这个操作执行了n-1次
+ * 只看算法的话，其实就是把 遍历所有边 的这个操作执行了n-1次
  * 但结合实际的话，那么就是Bellman-ford实现思想
 */
 
@@ -29,9 +30,9 @@ void Bellman_ford()
     memset(dist, 0x3f, sizeof dist);
     dist[1] = 0;
 
-    for(int i = 0; i < k; i++)
+    for(int i = 0; i < k; i++)  // 边数不超过i条的最短路
     {
-        memcpy(backup, dist, sizeof dist);  //备份
+        memcpy(backup, dist, sizeof dist);  //备份，防止串联
 
         for(int j = 1; j <= m; j++)     //遍历m条边，对每条边进行松弛操作
         {
