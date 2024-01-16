@@ -9,7 +9,7 @@ using namespace std;
 using PII = pair<int, int>;
 
 priority_queue<PII, vector<PII>, greater<PII>> q;   // 小根堆
-const int N = 1e5 + 10, M = 2e5 + 10;
+const int N = 1e5 + 10, M = 2e5 + 10;   // 注意题中是邮箱图还是无向图
 int h[N], e[M], ne[M], w[M], idx;
 int dist[N];
 bool st[N];
@@ -26,7 +26,7 @@ void dijkstra()
     // 初始化
     memset(dist, 0x3f, sizeof(dist));
     dist[s] = 0;
-    q.push({0, s});
+    q.push({dist[s], s});
     
     while(q.size())
     {
