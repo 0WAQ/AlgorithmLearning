@@ -30,7 +30,7 @@ void Bellman_ford()
     memset(dist, 0x3f, sizeof dist);
     dist[1] = 0;
 
-    for(int i = 0; i < k; i++)  // 边数不超过i条的最短路
+    for(int i = 0; i < k; i++)  // 边数不超过i条的最短路, 没有边路限制时为n - 1
     {
         memcpy(backup, dist, sizeof dist);  //备份，防止串联
 
