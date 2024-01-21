@@ -25,7 +25,7 @@ void spfa()
     dist[1] = 0;
     q.push(1);
     st[1] = true;
-    //cnt[1] = 1;
+    cnt[1] = 1;
 
     while(q.size())
     {
