@@ -25,6 +25,7 @@ void spfa()
     dist[1] = 0;
     q.push(1);
     st[1] = true;
+    //cnt[1] = 1;
 
     while(q.size())
     {
@@ -37,18 +38,25 @@ void spfa()
             int j = e[i];
             if(dist[t] + w[i] < dist[j])    // 满足条件说明
             {
-                cnt[j] = cnt[t] + 1;
-                if(cnt[j] >= n) // 从j到起点的最短路条数大于等于n，有环
-                {
-                    cout << "YES";
-                    return;
-                }
+                // cnt[j] = cnt[t] + 1;
+                // if(cnt[j] >= n) // 从j到起点的最短路条数大于等于n，有环
+                // {
+                //     cout << "YES";
+                //     return;
+                // }
 
                 dist[j] = dist[t] + w[i];;
                 if(!st[j])
                 {
                     q.push(j);
-                    st[j] = true;   
+                    st[j] = true;
+
+                    cnt[j] ++;
+                    if(cnt[j] >= n)
+                    {
+                        cout << "YES";
+                        return;
+                    }
                 }
             }
         }
