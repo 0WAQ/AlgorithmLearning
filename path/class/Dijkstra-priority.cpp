@@ -13,7 +13,7 @@ const int N = 1e5 + 10, M = 2e5 + 10;   // 注意题中是邮箱图还是无向�
 int h[N], e[M], ne[M], w[M], idx;
 int dist[N];
 bool st[N];
-int n, m, s;
+int n, m;
 
 // 创建邻接表
 void add(int a, int b, int c)
@@ -21,7 +21,7 @@ void add(int a, int b, int c)
     w[idx] = c, e[idx] = b, ne[idx] = h[a], h[a] = idx++;
 }
 
-void dijkstra()
+void dijkstra(int s)
 {
     // 初始化
     memset(dist, 0x3f, sizeof(dist));
@@ -53,7 +53,11 @@ void dijkstra()
 
 int main()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
+
     memset(h, -1, sizeof(h));
+    int s;
     cin >> n >> m >> s;
     while(m--)
     {
@@ -61,7 +65,7 @@ int main()
         cin >> a >> b >> c;
         add(a, b, c);
     }
-    dijkstra();
+    dijkstra(s);
     for(int i = 1; i <= n; i++)
         cout << dist[i] << ' ';
     cout << endl;
