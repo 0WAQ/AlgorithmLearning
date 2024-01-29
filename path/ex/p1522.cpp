@@ -1,87 +1,59 @@
 // [USACO2.4] 牛的旅行 Cow Tours
-#include <cmath>
 #include <iostream>
+#include <cstring>
+#include <cmath>
 using namespace std;
 
 const int N = 155;
-int fa[N], x[N], y[N];
-double d[N][N], maxd[N], ad[N];
+const double INF = 1e20;
+double g[N][N], maxd[N], x[N], y[N];
 int n;
 
-void init()
+double dist(double xi, double yi, double xj, double yj)
 {
-    for (int i = 1; i <= n; i++)
-        fa[i] = i;
-}
-
-int find(int x) 
-{ 
-    return fa[x] == x ? x : fa[x] = find(fa[x]); 
-}
-
-void merge(int x, int y)
-{
-    x = find(x);
-    y = find(y);
-    if (x == y)
-        return;
-    fa[y] = x;
-}
-
-bool together(int x, int y) 
-{ 
-    return find(x) == find(y); 
-}
-
-double dist(double x1, double y1, double x2, double y2)
-{
-    return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    return sqrt((xi - xj) * (xi - xj) + (yi - yj) * (yi - yj));
 }
 
 int main()
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0); 
     cin >> n;
-    init();
-    for (int i = 1; i <= n; i++)
+    for(int i = 1; i <= n; i++)
         cin >> x[i] >> y[i];
-        
-    for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
+
+    for(int i = 1; i <= n; i++)
+        for(int j = 1; j <= n; j++)
         {
             char c;
             cin >> c;
-            if (i == j)
-                d[i][j] = 0;
-            else if (c == '1')
-            {
-                d[i][j] = dist(x[i], y[i], x[j], y[j]);
-                merge(i, j);
-            }
-            else
-                d[i][j] = 1 << 30;
+            if(i == j) g[i][j] = 0;
+            else if(c == '1') g[i][j] = dist(x[i], y[i], x[j], y[j]);
+            else g[i][j] = INF;
         }
 
-    for (int k = 1; k <= n; k++)
-        for (int i = 1; i <= n; i++)
-            for (int j = 1; j <= n; j++)
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+    for(int k = 1; k <= n; k++)
+        for(int i = 1; i <= n; i++)
+            for(int j = 1; j <= n; j++)
+                g[i][j] = min(g[i][j], g[i][k] + g[k][j]);
 
-    for (int i = 1; i <= n; i++)
+    // 1.计算maxd和maxd[i]的最大值
+    double maxx = 0.0;
+    for(int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
-            if (together(i, j))
-                maxd[i] = max(maxd[i], d[i][j]);
-        ad[find(i)] = max(ad[find(i)], maxd[i]);
+        for(int j = 1; j <= n; j++)
+            if(g[i][j] < INF / 2)   // i和j连通
+                maxd[i] = max(maxd[i], g[i][j]);
+        maxx = max(maxx, maxd[i]);
     }
 
-    double ans = 1 << 30;
-    for (int i = 1; i <= n; i++)
-        for (int j = i + 1; j <= n; j++)
-            if (!together(i, j))
-                ans = min(ans,
-                          max(maxd[i] + maxd[j] + dist(x[i], y[i], x[j], y[j]),
-                              max(ad[find(i)], ad[find(j)])));
+    // 2.枚举所有牧区
+    double res = INF;
+    for(int i = 1; i <= n; i++)
+        for(int j = 1; j <= n; j++)
+            if(g[i][j] > INF / 2)   // ij不连通
+                res = min(res, maxd[i] + dist(x[i], y[i], x[j], y[j]) + maxd[j]);
 
-    printf("%.6lf\n", ans);
+    printf("%.6lf\n", max(maxx, res));
     return 0;
-}
+}   
