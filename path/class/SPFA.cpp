@@ -9,7 +9,7 @@
  *        (一条路径包含n边,则包含n+1个点,至少有两个点相同)
  * 
  * 二. spfa求负环时,时间复杂度稳定在 O(nm),可能会超时
- *     1. 当出现这种情况时,使判断条件为2n, 就认为图中有很大可能存在负环
+ *     1. 当出现这种情况时,使判断条件为2n(或者更大), 就认为图中有很大可能存在负环
 */
 
 #include <iostream>
@@ -37,6 +37,7 @@ void spfa()
     q.push(1);
     st[1] = true;
 
+    int count = 0;
     while(q.size())
     {
         int t = q.front();
@@ -56,7 +57,12 @@ void spfa()
                     cout << "有负环" << endl;
                     return;
                 }
-
+                // 经验上的trick
+                if(++count > 10 * N)
+                {
+                    cout << "有负环" << endl;
+                    return;
+                }
                 dist[j] = dist[t] + w[i];
                 if(!st[j])
                 {
