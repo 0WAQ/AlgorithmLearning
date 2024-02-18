@@ -26,18 +26,22 @@ int find(int a)
 
 void kruskal()
 {
+    // 将所有边从大到小排序
     sort(e + 1, e + m + 1);
 
+    // 从小到大枚举每条边
     for(int i = 1; i <= m; i++)
     {
+        // 边的起点与终点所在的连通块
         int pa = find(e[i].a);
         int pb = find(e[i].b);
 
+        // 两个点不在一个连通块中，将其合并成一个
         if(pa != pb)
         {
             p[pa] = pb;
             res += e[i].c;
-            cnt++;
+            cnt++;  // 连通块中的点数加1
         }
     }
 }

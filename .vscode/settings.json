@@ -86,7 +86,12 @@
     "thread": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "cerrno": "cpp",
+    "climits": "cpp",
+    "ios": "cpp",
+    "locale": "cpp",
+    "stack": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
