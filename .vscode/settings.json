@@ -91,7 +91,9 @@
     "climits": "cpp",
     "ios": "cpp",
     "locale": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "stdio.h": "c",
+    "alloca.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
