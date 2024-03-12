@@ -39,12 +39,12 @@ void dijkstra()
             if(d + 1 < dist[j]) // 第一次找到最短边
             {
                 dist[j] = d + 1;
-                ans[j] = ans[ver]; //到0~j的边数和0~ver再从ver~j的边数是一样的（边数指的是最短的）
+                ans[j] = ans[ver]; //到0~j的边数和0~ver再从ver~j的边数是一样的（边数指的是最短的），因为ver~j只有一条边
                 q.push({dist[j], j});
             }
             else if(d + 1 == dist[j])   // 之后每次找到相等的边
             {
-                ans[j] += ans[ver]; // 之后每找到一次就甲ans[ver]次
+                ans[j] += ans[ver]; // 之后每找到一次就加ans[ver]次
                 ans[j] %= mod;
             }
         }
