@@ -93,7 +93,11 @@
     "locale": "cpp",
     "stack": "cpp",
     "stdio.h": "c",
-    "alloca.h": "c"
+    "alloca.h": "c",
+    "cassert": "cpp",
+    "cfloat": "cpp",
+    "ciso646": "cpp",
+    "version": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
