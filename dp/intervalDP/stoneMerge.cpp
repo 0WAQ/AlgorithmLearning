@@ -18,7 +18,7 @@ int main()
         dp[i][i] = 0;
     }
 
-    for(int len = 1; len <= n; len++)
+    for(int len = 2; len <= n; len++)
         for(int i = 1; i + len - 1 <= n; i++)
         {
             int j = i + len - 1;

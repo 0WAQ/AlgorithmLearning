@@ -9,7 +9,7 @@ using namespace std;
 using PII = pair<int, int>;
 
 priority_queue<PII, vector<PII>, greater<PII>> q;   // 小根堆
-const int N = 1e5 + 10, M = 2e5 + 10;   // 注意题中是邮箱图还是无向图
+const int N = 1e5 + 10, M = 2e5 + 10;   // 注意题中是有向图还是无向图
 int h[N], e[M], ne[M], w[M], idx;
 int dist[N];
 bool st[N];
