@@ -21,6 +21,12 @@ int main()
     for(int i = 1; i <= n; i++) dp[i][0] = i;
     for(int j = 1; j <= m; j++) dp[0][j] = j;
 
+/**
+ * 两篇不错的题解
+ * https://www.acwing.com/solution/content/5607/
+ * https://leetcode.cn/problems/edit-distance/solutions/188223/bian-ji-ju-chi-by-leetcode-solution/
+*/
+
     for(int i = 1; i <= n; i++)
         for(int j = 1; j <= m; j++)
             if(a[i] == b[j])    // 不需要进行操作
