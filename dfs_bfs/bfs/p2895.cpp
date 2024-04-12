@@ -35,7 +35,8 @@ int bfs()
             int nt = cur.t + 1;
 
             // 越界、已走过或者 有障碍(有陨石降落并且走到该点时陨石已经降落)
-            if(nx < 0 || nx >= m || ny < 0 || ny >= m || st[nx][ny] || (g[nx][ny] != -1 && g[nx][ny] <= nt))
+            // 不需要判断>300,因为地图是无限大的，而陨石最多影响到301格，所以只要能走到302格就算成功
+            if(nx < 0 || ny < 0 || st[nx][ny] || (g[nx][ny] != -1 && g[nx][ny] <= nt))
                 continue;
             
             q.push(node{nx, ny, nt});
