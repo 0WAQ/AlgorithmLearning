@@ -1,56 +1,81 @@
-// 已知二叉树的前序和中序，建树
-#include <iostream>
-#include <cstring>
-#include <queue>
+// 已知二叉树的前序和中序遍历还原树 && 镜像二叉树的层序遍历
+#include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
-const int N = 35, M = 1e6;
-int tree[M], mid[N], pre[N], level[N];
-int n, len;
+const int N = 1e6;
 
-// root是当前树的根，也是前序数组的下标，start和end是当前子树的起始
-void build(int root, int l, int r, int idx)
+void solve()
 {
-    if(l > r) return;
+    int n;
+    cin >> n;
 
-    int i = l;
+    vector<int> mid(n + 1), pre(n + 1);
+    for(int i = 1; i <= n; i++) cin >> mid[i];
+    for(int i = 1; i <= n; i++) cin >> pre[i];
 
-    // 在中序数组中找到当前子树的根，这样i的左边是左子树，右边是右子树
-    while(i < r && mid[i] != pre[root]) i++;
-    tree[idx] = pre[root];
-    build(root + 1, l, i - 1, idx * 2);
-    build(root + i - l + 1, i + 1, r, idx * 2 + 1);
-}
+    // 建树
+    vector<int> tree(N, -1);    // tree中存储的真实的树，需要的大小为1e6
+    // 当前子树的根节点是root（在前序中），l、r是当前子树的起始位置与结束位置（在中序中）
+    auto build = [&](auto& build, int root, int l, int r, int x) -> void {
+        if(l > r)   return;
 
-void print()
-{
-    queue<int> q;
-    q.push(1);
+        // i是root在中序数组中的位置，从l ~ i - 1是左子树，i + 1 ~ r是右子树
+        int i = l;
+        while(i < r && pre[root] != mid[i])
+            i++;
+        
+        tree[x] = pre[root];
 
-    while(!q.empty())
-    {
-        int t = q.front();
-        q.pop();
+        /**
+         * 该子树的左子树：
+         * 子树的根节点是root + 1，因为是前序遍历
+        */
+        build(build, root + 1, l, i - 1, x * 2);
 
-        level[++len] = tree[t];
-        if(tree[2 * t + 1] != -1)   q.push(2 * t + 1);
-        if(tree[2 * t] != -1)   q.push(2 * t);  
-    }
+        /**
+         * 该子树的右子树：
+         * 左子树的长度是 (i - 1) - l + 1 = i - l
+         * 右子树的根是（在前序中）是 root + (i - l) + 1
+        */
+        build(build, root + i - l + 1, i + 1, r, x * 2 + 1);
+    };
+    build(build, 1, 1, n, 1);
 
-    for(int i = 1; i < len; i++)
-        cout << level[i] << ' ';
-    cout << level[len] << endl;
+    // 层序遍历的反转（只需要将右孩子先于左孩子入队即可）
+    vector<int> level;
+    auto print = [&]() -> void {
+
+        queue<int> q;
+        q.push(1);
+
+        while(!q.empty())
+        {
+            int t = q.front();
+            q.pop();
+
+            level.emplace_back(tree[t]);
+            
+            // 将左右孩子反转入队
+            int l = 2 * t, r = l + 1;
+            if(tree[r] != -1) q.push(r);
+            if(tree[l] != -1) q.push(l); 
+        }
+
+        for(int i = 0; i < level.size(); i++)
+            cout << level[i] << " \n"[i == level.size() - 1];
+    };
+    print();
 }
 
 int main()
 {
-    cin >> n;
-    memset(tree, -1, sizeof(tree));
-    for(int i = 1; i <= n; i++) cin >> mid[i];
-    for(int i = 1; i <= n; i++) cin >> pre[i];
+    ios::sync_with_stdio(0);
+    cin.tie(nullptr), cout.tie(nullptr);
 
-    build(1, 1, n, 1);
-    print();
+    int t = 1;
+    //cin >> t;
+    while(t--) solve();
 
     return 0;
 }
