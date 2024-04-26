@@ -1119,4 +1119,9 @@ Kruskal算法和学校的数学、物理作业
 ### 4.24
   - AcWing算法基础课：最长上升子序列Ⅰ、Ⅱ
   - 修复flypenbug
-  - ABC399补题ABC
+  - ABC339补题ABC
+### 4.25
+  - ABC338补题ABC
+### 4.26
+  - ABC337补题ABC
+  - MySQL是怎样运行的：第1、2讲
