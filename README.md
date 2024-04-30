@@ -1134,3 +1134,8 @@ Kruskal算法和学校的数学、物理作业
 ### 4.29
   - codeforces_165_Div2
   - ABC335补题ABC
+### 4.30
+  - codeforces_165_Div2补题：C
+  - MySQL必知必会第23、24张：使用存储过程、使用游标
+  - MySQL视频教程：关于存储过程和游标的内容
+  - codeforces_942_Div2：只做出来一道。。。
