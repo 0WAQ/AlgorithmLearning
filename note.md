@@ -220,3 +220,9 @@
     - **index:** $\color{red} 树的向下投影、树的中序遍历与区间dp$
     - **summary:** 每棵树都由更小的树合并而来，就像区间dp中的大区间由更小的区间合并而来
     - **solve:** 如题
+  
+- Atcoder357：C题 Sierpinski carpet
+    - **index:** $\color{red} 利用dfs递归打印$
+    - **summary:** 先将字符存下来，处理完后打印
+
+ 
