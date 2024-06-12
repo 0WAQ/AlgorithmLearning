@@ -225,4 +225,10 @@
     - **index:** $\color{red} 利用dfs递归打印$
     - **summary:** 先将字符存下来，处理完后打印
 
- 
+- basic/ruler/Atcoder355: D题 Intersecting Intervals
+    - **index:** $\color{red} 利用双指针计算相交区间$
+    - **summary:** 正难则反, 计算不可能相交数
+
+- datStructure/tree/百炼4081树的转换
+    - **index:** $\color{red} 树转换为二叉树后的深度变化$
+    - **summary:** 转换后每个节点的深度 = 父节点的深度 + 父节点的第几个孩子
