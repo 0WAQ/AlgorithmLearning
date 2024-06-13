@@ -232,3 +232,7 @@
 - datStructure/tree/百炼4081树的转换
     - **index:** $\color{red} 树转换为二叉树后的深度变化$
     - **summary:** 转换后每个节点的深度 = 父节点的深度 + 父节点的第几个孩子
+
+- other/Atcoder354: C题 AtCoder Magics
+    - **index:** $\color{red} 本质是寻找逆序对$
+    - **summary:** 需要排序其中一个数字, 循环计算另一个数字的基准
