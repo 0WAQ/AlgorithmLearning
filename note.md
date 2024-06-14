@@ -236,3 +236,7 @@
 - other/Atcoder354: C题 AtCoder Magics
     - **index:** $\color{red} 本质是寻找逆序对$
     - **summary:** 需要排序其中一个数字, 循环计算另一个数字的基准
+  
+- dp/treedp/Atcoder333: D题 Erase Leaves
+    - **index:** $\color{red} 树形dp, 求数的最大边权(本题为1)$
+    - **summary:** 在只能删除叶子节点的情况下删除根节点的最小代价的转换
