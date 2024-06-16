@@ -8,7 +8,7 @@ using ll = long long;
  * 状态表示：dp[i]表示点i到其它所有点的 距离*点权 之和
  * 初始状态：dp[1](可以以任意点1<=i<=n为初始状态)，需要在dfs中计算得出
  * 最终状态：min({dp[i]})
- * 状态转移方程：dp[i] = dp[cur] + tot - 2 * sum[i]
+ * 状态转移方程：dp[i] = dp[u] + tot - 2 * sum[i]
 */
 
 int main()
@@ -32,24 +32,24 @@ int main()
     for(int i = 1; i <= n; i++) cin >> a[i];
     
     // 计算tot、sum、初始状态dp[1]
-    auto dfs = [&](auto& self, int cur, int lst, ll dep) -> void {
-        tot += a[cur];  // 可以在输入时处理
-        dp[1] += a[cur] * dep; // 初始状态：∑(a[cur] * dep[cur])，1 <= cur <= n
+    auto dfs = [&](auto& dfs, int u, int fa, ll dep) -> void {
+        tot += a[u];  // 可以在输入时处理
+        dp[1] += a[u] * dep; // 初始状态：∑(a[u] * dep[u])，1 <= u <= n
         
-        sum[cur] = a[cur];  // sum[cur]：以cur为根时的树的权值和
-        for(auto& i : e[cur]) {
-            if(i == lst) continue;  // 建的图为双向图，这个条件是为了防止向回走 
-            self(self, i, cur, dep + 1);  // 向下递归，计算所有sum
-            sum[cur] += sum[i];   // 子节点的权值，归的过程中算
+        sum[u] = a[u];  // sum[u]：以u为根时的树的权值和
+        for(auto& i : e[u]) {
+            if(i == fa) continue;  // 建的图为双向图，这个条件是为了防止向回走 
+            dfs(dfs, i, u, dep + 1);  // 向下递归，计算所有sum
+            sum[u] += sum[i];   // 子节点的权值，归的过程中算
         } 
     };
 
     // 状态转移
-    auto ddfs = [&](auto& self, int cur, int lst) -> void {
-        for(auto& i : e[cur]) {
-            if(i == lst)    continue;   // 同上
-            dp[i] = dp[cur] + tot - 2 * sum[i];
-            self(self, i, cur);
+    auto ddfs = [&](auto& ddfs, int u, int fa) -> void {
+        for(auto& i : e[u]) {
+            if(i == fa)    continue;   // 同上
+            dp[i] = dp[u] + tot - 2 * sum[i];
+            ddfs(ddfs, i, u);
         }
     };
 
