@@ -240,3 +240,8 @@
 - dp/treedp/Atcoder333: D题 Erase Leaves
     - **index:** $\color{red} 树形dp, 求数的最大边权(本题为1)$
     - **summary:** 在只能删除叶子节点的情况下删除根节点的最小代价的转换
+
+- other/Atcoder329: D题 Election Quick Report
+    - **index:** $\color{red} stl优先队列自定义排序函数, 仿函数$
+    - **summary:** 自定义排序用过仿函数或者lambda通过模板的第三个参数传递, 其lhs是已经在队中的元素, rhs是待插入的元素
+
