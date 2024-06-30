@@ -1483,3 +1483,17 @@ Kruskal算法和学校的数学、物理作业
 ### 6.23
 
 - 补题ABC359
+
+### 6.28
+
+- 仿muduo: 增加InetAddress, Socket, Epoll类
+- 极客时间: 网络编程实战前两讲
+- epoll原理初步
+
+### 6.29
+
+- 仿muduo: 增加Channel类
+  
+### 6.30
+
+- 仿muduo: 增加EventLoop类, 使用回调函数优化Channel::handle的逻辑
