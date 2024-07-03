@@ -1496,4 +1496,14 @@ Kruskal算法和学校的数学、物理作业
   
 ### 6.30
 
-- 仿muduo: 增加EventLoop类, 使用回调函数优化Channel::handle的逻辑
+- 仿muduo: 增加EventLoop类, 使用回调函数优化Channel::handle的逻辑 
+
+### 7.2
+
+- 仿muduo: 具体功能详见Github
+- LeetCode高频300道: 7道题
+
+### 7.3
+
+- 仿muduo: 具体任务详见Github
+- LeetCode高频300题: 7道题
