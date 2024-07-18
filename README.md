@@ -1493,10 +1493,10 @@ Kruskal算法和学校的数学、物理作业
 ### 6.29
 
 - 仿muduo: 增加Channel类
-  
+
 ### 6.30
 
-- 仿muduo: 增加EventLoop类, 使用回调函数优化Channel::handle的逻辑 
+- 仿muduo: 增加EventLoop类, 使用回调函数优化Channel::handle的逻辑
 
 ### 7.2
 
@@ -1507,3 +1507,25 @@ Kruskal算法和学校的数学、物理作业
 
 - 仿muduo: 具体任务详见Github
 - LeetCode高频300题: 7道题
+
+### 7.14
+
+- 仿muduo: 已经完成, 正在添加额外功能
+- LeetCode高频300题: 做到哈希表
+- LeetCode周赛406
+
+### 7.15
+
+- LeetCode高频300题: 5道题
+- 仿muduo: 详见log
+
+### 7.16
+
+- LeetCode高频300题: 哈希表刷完
+- 仿muduo: 详见log
+
+### 7.17
+
+- LeetCode高频300题: 5道二分
+- 仿muduo: 详见log
+
